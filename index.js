@@ -6,6 +6,7 @@ var cake = {
   bakeTime: "45 minutes",
   customer: "Tommy",
   decorate: function(updateFunction) {
+debugger
     var status = "Decorating with " + this.topping + ". Ready to eat soon!"
     updateFunction(status)
     setTimeout(function() {
@@ -24,20 +25,25 @@ var pie = {
 }
 
 function makeCake() {
-  var updateCakeStatus;
-  mix(updateCakeStatus)
+debugger
+  var updateCakeStatus = () => updateStatus;
+  mix.call(cake, updateCakeStatus)
 }
 
 function makePie() {
-  var updatePieStatus;
-  mix(updatePieStatus)
+debugger
+  var updatePieStatus = () => updateStatus;
+  pie.decorate = () => cake.decorate
+  mix.call(pie, updatePieStatus)
 }
 
 function updateStatus(statusText) {
+debugger
   this.getElementsByClassName("status")[0].innerText = statusText
 }
 
 function bake(updateFunction) {
+debugger
   var status = "Baking at " + this.bakeTemp + " for " + this.bakeTime
   setTimeout(function() {
     cool(updateFunction)
@@ -45,6 +51,7 @@ function bake(updateFunction) {
 }
 
 function mix(updateFunction) {
+debugger
   var status = "Mixing " + this.ingredients.join(", ")
   setTimeout(function() {
     bake(updateFunction)
@@ -53,6 +60,7 @@ function mix(updateFunction) {
 }
 
 function cool(updateFunction) {
+debugger
   var status = "It has to cool! Hands off!"
   setTimeout(function() {
     this.decorate(updateFunction)
@@ -62,6 +70,13 @@ function cool(updateFunction) {
 function makeDessert() {
   //add code here to decide which make... function to call
   //based on which link was clicked
+  
+  const pie = new RegExp('pie', 'gi');
+  const cake = new RegExp('cake', 'gi');
+  
+  pie.test(this.innerHTML) ? makePie() : makeCake()
+  // this.innerHTML.includes(pie) ?
+  
 }
 
 function serve(message, customer) {
