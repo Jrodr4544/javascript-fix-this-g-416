@@ -38,7 +38,7 @@ debugger
 }
 
 function updateStatus(statusText) {
-debugger
+// debugger
   this.getElementsByClassName("status")[0].innerText = statusText
 }
 
