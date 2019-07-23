@@ -72,11 +72,7 @@ debugger
 function makeDessert() {
   //add code here to decide which make... function to call
   //based on which link was clicked
-  
-  //const pie = new RegExp('pie', 'gi');
-  //const cake = new RegExp('cake', 'gi');
-  
-  //pie.test(this.innerHTML) ? makePie() : makeCake()
+
   debugger
   if(this.parentNode.id === "cake") {
   	makeCake.call(this.parentNode)
