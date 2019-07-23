@@ -6,7 +6,7 @@ var cake = {
   bakeTime: "45 minutes",
   customer: "Tommy",
   decorate: (updateFunction) => {
-// debugger
+debugger
     var status = "Decorating with " + this.topping + ". Ready to eat soon!"
     updateFunction(status)
     setTimeout(() => {
@@ -25,25 +25,25 @@ var pie = {
 }
 
 function makeCake() {
-// debugger
-  var updateCakeStatus = () => updateStatus;
+debugger
+  var updateCakeStatus = () => updateStatus(this);
   mix.call(cake, updateCakeStatus)
 }
 
 function makePie() {
-// debugger
-  var updatePieStatus = () => updateStatus;
+debugger
+  var updatePieStatus = () => updateStatus(this);
   pie.decorate = () => cake.decorate
   mix.call(pie, updatePieStatus)
 }
 
 function updateStatus(statusText) {
-// debugger
+debugger
   this.getElementsByClassName("status")[0].innerText = statusText
 }
 
 function bake(updateFunction) {
-// debugger
+debugger
   var status = "Baking at " + this.bakeTemp + " for " + this.bakeTime
   setTimeout(() => {
     cool.call(this, updateFunction)
@@ -51,7 +51,7 @@ function bake(updateFunction) {
 }
 
 function mix(updateFunction) {
-// debugger
+debugger
   var status = "Mixing " + this.ingredients.join(", ")
   setTimeout(() => {
     bake.call(this, updateFunction)
@@ -60,7 +60,7 @@ function mix(updateFunction) {
 }
 
 function cool(updateFunction) {
-// debugger
+debugger
   var status = "It has to cool! Hands off!"
   setTimeout(() => {
     this.decorate(updateFunction)
@@ -76,7 +76,7 @@ function makeDessert() {
   //const cake = new RegExp('cake', 'gi');
   
   //pie.test(this.innerHTML) ? makePie() : makeCake()
-  // debugger
+  debugger
   if(this.parentNode.id === "cake") {
   	makeCake.call(this.parentNode)
   } else {
@@ -87,7 +87,7 @@ function makeDessert() {
 
 function serve(message, customer) {
   //you shouldn't need to alter this function
-// debugger
+debugger
   return(customer + ", your " + this.name + " is ready to eat! " + message)
 }
 
