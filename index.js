@@ -5,12 +5,12 @@ var cake = {
   bakeTemp: "425 degrees",
   bakeTime: "45 minutes",
   customer: "Tommy",
-  decorate: function(updateFunction) {
+  decorate: (updateFunction) => {
 debugger
     var status = "Decorating with " + this.topping + ". Ready to eat soon!"
     updateFunction(status)
-    setTimeout(function() {
-      updateFunction(serve.apply(this, "Happy Eating!", this.customer))
+    setTimeout(() => {
+      updateFunction(serve.apply(this, ["Happy Eating!", this.customer]))
     }, 2000)
   }
 }
@@ -45,16 +45,16 @@ debugger
 function bake(updateFunction) {
 debugger
   var status = "Baking at " + this.bakeTemp + " for " + this.bakeTime
-  setTimeout(function() {
-    cool(updateFunction)
+  setTimeout(() => {
+    cool.call(this, updateFunction)
   }, 2000)
 }
 
 function mix(updateFunction) {
 debugger
   var status = "Mixing " + this.ingredients.join(", ")
-  setTimeout(function() {
-    bake(updateFunction)
+  setTimeout(() => {
+    bake.call(this, updateFunction)
   }, 2000)
   updateFunction(status)
 }
@@ -62,25 +62,32 @@ debugger
 function cool(updateFunction) {
 debugger
   var status = "It has to cool! Hands off!"
-  setTimeout(function() {
+  setTimeout(() => {
     this.decorate(updateFunction)
   }, 2000)
+  updateFunction(status)
 }
 
 function makeDessert() {
   //add code here to decide which make... function to call
   //based on which link was clicked
   
-  const pie = new RegExp('pie', 'gi');
-  const cake = new RegExp('cake', 'gi');
+  //const pie = new RegExp('pie', 'gi');
+  //const cake = new RegExp('cake', 'gi');
   
-  pie.test(this.innerHTML) ? makePie() : makeCake()
-  // this.innerHTML.includes(pie) ?
+  //pie.test(this.innerHTML) ? makePie() : makeCake()
+  debugger
+  if(this.parentNode.id === "cake") {
+  	makeCake.call(this.parentNode)
+  } else {
+  	makePie.call(this.parentNode)
+  }
   
 }
 
 function serve(message, customer) {
   //you shouldn't need to alter this function
+debugger
   return(customer + ", your " + this.name + " is ready to eat! " + message)
 }
 
