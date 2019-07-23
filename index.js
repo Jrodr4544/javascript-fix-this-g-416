@@ -43,7 +43,7 @@ debugger
 }
 
 function bake(updateFunction) {
-debugger
+// debugger
   var status = "Baking at " + this.bakeTemp + " for " + this.bakeTime
   setTimeout(() => {
     cool.call(this, updateFunction)
