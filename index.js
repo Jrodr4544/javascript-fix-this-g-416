@@ -88,7 +88,6 @@ function makeDessert() {
 
 function serve(message, customer) {
   //you shouldn't need to alter this function
-debugger
   return(customer + ", your " + this.name + " is ready to eat! " + message)
 }
 
