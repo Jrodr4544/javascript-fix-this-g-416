@@ -61,7 +61,7 @@ debugger
 }
 
 function cool(updateFunction) {
-debugger
+// debugger
   var status = "It has to cool! Hands off!"
   setTimeout(() => {
     this.decorate(updateFunction)
