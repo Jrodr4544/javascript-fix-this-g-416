@@ -52,7 +52,7 @@ debugger
 }
 
 function mix(updateFunction) {
-debugger
+// debugger
   var status = "Mixing " + this.ingredients.join(", ")
   setTimeout(() => {
     bake.call(this, updateFunction)
