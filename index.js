@@ -31,7 +31,7 @@ debugger
 }
 
 function makePie() {
-debugger
+// debugger
   var updatePieStatus = updateStatus.bind(this);
   pie.decorate = cake.decorate.bind(pie)
   mix.call(pie, updatePieStatus)
