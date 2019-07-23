@@ -6,7 +6,7 @@ var cake = {
   bakeTime: "45 minutes",
   customer: "Tommy",
   decorate: function(updateFunction) {
-debugger
+// debugger
     var status = "Decorating with " + this.topping + ". Ready to eat soon!"
     updateFunction(status)
     setTimeout(() => {
