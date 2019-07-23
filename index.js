@@ -5,7 +5,7 @@ var cake = {
   bakeTemp: "425 degrees",
   bakeTime: "45 minutes",
   customer: "Tommy",
-  decorate: (updateFunction) => {
+  decorate: function(updateFunction) {
 debugger
     var status = "Decorating with " + this.topping + ". Ready to eat soon!"
     updateFunction(status)
@@ -26,13 +26,13 @@ var pie = {
 
 function makeCake() {
 debugger
-  var updateCakeStatus = () => updateStatus(this);
+  var updateCakeStatus = updateStatus.bind(this);
   mix.call(cake, updateCakeStatus)
 }
 
 function makePie() {
 debugger
-  var updatePieStatus = () => updateStatus(this);
+  var updatePieStatus = updateStatus.bind(this);
   pie.decorate = () => cake.decorate
   mix.call(pie, updatePieStatus)
 }
@@ -48,6 +48,7 @@ debugger
   setTimeout(() => {
     cool.call(this, updateFunction)
   }, 2000)
+  updateFunction(status)
 }
 
 function mix(updateFunction) {
